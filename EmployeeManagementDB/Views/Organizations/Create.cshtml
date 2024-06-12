@@ -1,0 +1,50 @@
+﻿@model EmployeeManagementDB.Models.DBModels.Organization
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Добавление организации";
+}
+
+<h1>Create</h1>
+
+<h4>Organization</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inn" class="control-label"></label>
+                <input asp-for="Inn" class="form-control" />
+                <span asp-validation-for="Inn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ogrn" class="control-label"></label>
+                <input asp-for="Ogrn" class="form-control" />
+                <span asp-validation-for="Ogrn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status">Статус:</label>
+                <select id="status" name="Status" class="form-control">
+                    <option value="">Выберите статус</option>
+                    <option value="Активен">Активен</option>
+                    <option value="Не активен">Не активен</option>
+                    <option value="В архиве">В архиве</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>

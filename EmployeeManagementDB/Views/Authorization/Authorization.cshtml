@@ -1,0 +1,29 @@
+﻿@model EmployeeManagementDB.Models.DBModels.UserAccount
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Авторизация";
+}
+<main>
+    @using (Html.BeginForm("Authorization", "Authorization", FormMethod.Post))
+    {
+        <h2>Вход</h2>
+
+        <form method="post">
+            <div>
+                <label for="login">Логин:</label>
+                @Html.TextBoxFor(model => model.Login)
+            </div>
+            <div>
+                <label for="password">Пароль:</label>
+                @Html.TextBoxFor(model => model.Password)
+            </div>
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+    }
+</main>

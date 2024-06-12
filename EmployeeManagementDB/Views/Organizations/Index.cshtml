@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EmployeeManagementDB.Models.DBModels.Organization>
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Организации";
+}
+
+<h1>Index</h1>
+
+<p>
+    @if (User.IsInRole("Администратор"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Добавить организацию</a>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                ИНН
+            </th>
+            <th>
+                ОРГН
+            </th>
+            <th>
+                Статус организации
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ogrn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                @if (User.IsInRole("Администратор"))
+                {
+                    <td>
+                        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.OrganizationId">Изменить</a>
+                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@item.OrganizationId">Удалить</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

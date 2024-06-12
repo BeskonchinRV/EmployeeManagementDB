@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EmployeeManagementDB.Models.DBModels.UserAccount>
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Аккаунты";
+}
+
+<h1>Index</h1>
+@if (User.IsInRole("Администратор"))
+{
+    <p>
+        <a asp-action="CreateUserAccount" class="btn btn-primary">Создать новую учетную запись</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Логин
+            </th>
+            <th>
+                Дата смены логина
+            </th>
+            <th>
+                Статус аккаунта
+            </th>
+            <th>
+                ФИО сотрудника
+            </th>
+            <th>
+                Роль сотрудника
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastLogin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AccountId">Изменить</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AccountId">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

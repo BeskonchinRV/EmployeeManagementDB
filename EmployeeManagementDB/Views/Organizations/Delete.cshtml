@@ -1,0 +1,33 @@
+﻿@model EmployeeManagementDB.Models.DBModels.Organization
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Удаление";
+}
+
+<h1>Удаление</h1>
+
+<div>
+    <h4>Организации</h4>
+    <hr />
+    <dl class="row">
+        <div class="col-sm-12">
+            <p><strong>Название:</strong> @Html.DisplayFor(model => model.Name)</p>
+        </div>
+        <div>
+            <p><strong>ИНН:</strong> @Html.DisplayFor(model => model.Inn)</p>
+        </div>
+        <div>
+            <p><strong>ОРГН:</strong> @Html.DisplayFor(model => model.Ogrn)</p>
+        </div>
+        <div>
+            <p><strong>Статус организации:</strong> @Html.DisplayFor(model => model.Status)</p>
+        </div>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OrganizationId" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

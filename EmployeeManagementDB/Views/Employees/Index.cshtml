@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EmployeeManagementDB.Models.DBModels.Employee>
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Сотрудники";
+}
+
+<h1>Index</h1>
+@if (User.IsInRole("Администратор"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Добавить сотрудника</a>
+    </p>
+}
+<form asp-action="DeleteMultiple" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ФИО
+                </th>
+                <th>
+                    Пол
+                </th>
+                <th>
+                    Дата рождения
+                </th>
+                <th>
+                    Идентификатор
+                </th>
+                <th>
+                    Контактная информация
+                </th>
+                <th>
+                    Статус сотрудника
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Identifier)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactInformation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    @if (User.IsInRole("Администратор"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.EmployeeId">Изменить</a> |
+                            <a asp-action="Delete" asp-route-id="@item.EmployeeId">Удалить</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

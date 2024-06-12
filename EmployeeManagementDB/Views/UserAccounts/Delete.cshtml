@@ -1,0 +1,32 @@
+﻿@model EmployeeManagementDB.Models.DBModels.UserAccount
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Удаление";
+}
+
+<h1>Удаление</h1>
+<div>
+    <h4>Аккаунты</h4>
+    <hr />
+    <dl class="row">
+        <div class="col-sm-12">
+            <p><strong>Логин:</strong> @Html.DisplayFor(model => model.Login)</p>
+        </div>
+        <div class="col-sm-12">
+            <p><strong>Статус аккаунта:</strong> @Html.DisplayFor(model => model.Status)</p>
+        </div>
+        <div class="col-sm-12">
+            <p><strong>ФИО привязанного сотрудника:</strong> @Html.DisplayFor(model => model.Employee.FullName)</p>
+        </div>
+        <div class="col-sm-12">
+            <p><strong>Роль:</strong> @Html.DisplayFor(model => model.Role.Name)</p>
+        </div>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AccountId" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

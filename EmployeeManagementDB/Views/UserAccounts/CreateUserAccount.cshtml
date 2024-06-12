@@ -1,0 +1,51 @@
+﻿@model EmployeeManagementDB.Models.DBModels.UserAccount
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Создать учетную запись";
+}
+
+<h2>Создать учетную запись</h2>
+
+<form method="post">
+    <div>
+        <label for="employeeId">Сотрудник:</label>
+        <select id="employeeId" name="EmployeeId">
+            <option value="">Выберите сотрудника</option>
+            @foreach (var employee in ViewBag.Employees)
+            {
+                <option value="@employee.EmployeeId">@employee.FullName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="login">Логин:</label>
+        <input type="text" id="login" name="Login" />
+        @Html.ValidationMessageFor(m => m.Login)
+    </div>
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="Password" />
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <div>
+        <label for="roleId">Роль:</label>
+        <select id="roleId" name="RoleId">
+            @foreach (var role in ViewBag.Roles)
+            {
+                <option value="@role.Value">@role.Text</option>
+            }
+        </select>
+        @Html.ValidationMessageFor(m => m.RoleId)
+    </div>
+    <div class="form-group">
+        <label asp-for="Status" class="control-label">Статус</label>
+        <select asp-for="Status" class="form-control">
+            <option value="">Выберите статус</option>
+            <option value="Активен">Активен</option>
+            <option value="Неактивен">Неактивен</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <button type="submit">Создать</button>
+</form>

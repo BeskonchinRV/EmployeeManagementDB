@@ -1,0 +1,43 @@
+﻿@* <!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - Авторизация</title>
+    <link rel="stylesheet" href="~/css/Index.css" />
+</head>
+<body>
+    <header>
+        
+    </header>
+
+    <div id="main-content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <a href="/Authorization/Authorization">Авторизация</a>
+        <a href="/Employees/Index">Сотрудники</a>
+        <a href="/Organizations/Index">Организации</a>
+        <a href="/UserAccounts/Index">Учетные записи</a>
+        <p>&copy; 2024</p>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html> *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/index.css" rel="stylesheet" />
+</head>
+<body>
+    @await Html.PartialAsync("Header")
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @await Html.PartialAsync("Footer")
+</body>
+</html>

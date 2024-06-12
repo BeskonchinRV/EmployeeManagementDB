@@ -1,0 +1,61 @@
+﻿@model EmployeeManagementDB.Models.DBModels.UserAccount
+
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Редактирование";
+}
+
+<h1>Edit</h1>
+
+<h4>UserAccount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AccountId" />
+            <div class="form-group">
+                <label asp-for="EmployeeId">Сотрудник:</label>
+                <select asp-for="EmployeeId" name="EmployeeId">
+                    <option value="">Выберите сотрудника</option>
+                    @foreach (var employee in ViewBag.Employees)
+                    {
+                        <option value="@employee.EmployeeId">@employee.FullName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Login" class="control-label"></label>
+                <input asp-for="Login" class="form-control" />
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label">Роль</label>
+                <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId">
+                    @foreach (var role in ViewBag.Roles)
+                    {
+                        <option value="@role.Value">@role.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label">Статус</label>
+                <select asp-for="Status" class="form-control">
+                    <option value="">Выберите статус</option>
+                    <option value="Активен">Активен</option>
+                    <option value="Неактивен">Неактивен</option>
+                    <option value="Заблокирован">Заблокирован</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>

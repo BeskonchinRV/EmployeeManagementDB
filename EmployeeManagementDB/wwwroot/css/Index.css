@@ -1,0 +1,115 @@
+﻿:root {
+    --background: #f5f5dc;
+    --primary: blue;
+    --secondary: #D8D8D8;
+    --foreground: white;
+    --floor: orange;
+}
+
+body {
+    background-color: var(--background);
+    font-family: cursive;
+    min-width: 350px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--floor);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: var(--floor);
+    color: black;
+    padding: 20px 0;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.btnm {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: var(--floor);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 2px 5px;
+    background-color: var(--foreground);
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+    .btn:hover {
+        background-color: var(--primary);
+    }
+
+.aClass {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+.table {
+    border: 2px solid orange;
+    border-collapse: collapse;
+}
+
+    .table tbody tr {
+        border-bottom: 2px solid orange;
+    }
+
+    .table thead th {
+        background-color: orange;
+        color: black;
+        border-right: 2px solid orange;
+    }
+
+    .table td {
+        border-right: 2px solid orange;
+    }
+a {
+    background: white;
+    color: black;
+    text-decoration: none;
+    padding: 2px 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+    a:hover {
+        background-color: blue;
+        color: black;
+    }

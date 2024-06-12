@@ -1,0 +1,34 @@
+﻿@using System.Security.Claims
+@{
+    var listMenu = new EmployeeManagementDB.Models.Panel.ListPanel();
+    string userRole = ViewBag.UserRole;
+}
+<header>
+    <div class="divFooter">
+        <nav>
+            <ul>
+                @if (User.Identity!.IsAuthenticated == false)
+                {
+                    @foreach (var item in listMenu.Panel)
+                    {
+                        <li class="headerli"><button class="btnm btn-primary"><a class="aClass" href="@Url.Action(item.Action, item.Controller)">@item.Label</a></button></li>
+                    }
+                }
+                else if (User.IsInRole("Пользователь"))
+                {
+                    @foreach (var item in listMenu.UserPanel)
+                    {
+                        <li class="headerli"><button class="btnm btn-primary"><a class="" href="@Url.Action(item.Action, item.Controller)">@item.Label</a></button></li>
+                    }
+                }
+                else if (User.IsInRole("Администратор"))
+                {
+                    @foreach (var item in listMenu.AdminPanel)
+                    {
+                        <li class="headerli"><button class="btnm btn-primary"><a class="aClass" href="@Url.Action(item.Action, item.Controller)">@item.Label</a></button></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</header>

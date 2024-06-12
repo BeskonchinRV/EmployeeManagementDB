@@ -1,0 +1,14 @@
+﻿@model EmployeeManagementDB.ViewModel.HomeViewModel
+@using System.Security.Claims
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Главная";
+}
+
+<h2>Добро пожаловать, @Model.FullName</h2>
+<div>
+    <p><strong>Дата рождения:</strong> @Model.DateOfBirth?.ToString("dd-MM-yyyy")</p>
+    <p><strong>Статус сотрудника:</strong> @Model.Status</p>
+    <p><strong>Роль:</strong> @Model.RoleName</p>
+    <p><strong>Логин:</strong> @Model.Login</p>
+</div>
